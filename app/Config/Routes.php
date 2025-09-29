@@ -7,4 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/api/hello', 'Api::hello');
+$routes->post('login', 'Auth::login');
+$routes->get('profile', 'Auth::profile');
+
 
