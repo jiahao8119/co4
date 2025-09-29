@@ -8,14 +8,15 @@ app.baseURL = 'https://co4-production.up.railway.app/'
 #--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
-database.default.hostname = ${MYSQLHOST}
-database.default.database = ${MYSQLDATABASE}
-database.default.username = ${MYSQLUSER}
-database.default.password = ${MYSQLPASSWORD}
+database.default.hostname = hopper.proxy.rlwy.net
+database.default.port     = 36366
+database.default.database = railway
+database.default.username = root
+database.default.password = FjAqvephWNIJBoqNnKxEynoepGidguQL
 database.default.DBDriver = MySQLi
-database.default.port     = ${MYSQLPORT}
+
 
 #--------------------------------------------------------------------
 # JWT
 #--------------------------------------------------------------------
-JWT_SECRET = mysupersecret123
+JWT_SECRET = mysupersecret
