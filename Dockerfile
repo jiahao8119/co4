@@ -5,11 +5,15 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libzip-dev \
     libonig-dev \
+    libssl-dev \       
     unzip \
     zip \
     git \
     && docker-php-ext-install pdo pdo_mysql intl \
     && rm -rf /var/lib/apt/lists/*
+
+# Ensure OpenSSL extension is enabled
+RUN docker-php-ext-install openssl || true
 
 # Enable Apache rewrite
 RUN a2enmod rewrite
