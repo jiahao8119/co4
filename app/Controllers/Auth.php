@@ -11,17 +11,18 @@ class Auth extends Controller
     public function login()
     {
         $request = service('request');
-        $username = $request->getPost('username');
-        $password = $request->getPost('password');
+        $data = $request->getJSON(true); // true = return as array
 
-        // Dummy check (replace with DB later)
+        $username = $data['username'] ?? null;
+        $password = $data['password'] ?? null;
+
         if ($username === 'admin' && $password === '1234') {
             $secret = getenv('JWT_SECRET') ?: 'supersecretkey';
             $payload = [
-                'iss' => "ci4-jwt",     // Issuer
-                'sub' => $username,     // Subject
-                'iat' => time(),        // Issued at
-                'exp' => time() + 3600  // Expire time (1 hour)
+                'iss' => "ci4-jwt",
+                'sub' => $username,
+                'iat' => time(),
+                'exp' => time() + 3600
             ];
 
             $jwt = JWT::encode($payload, $secret, 'HS256');
@@ -37,6 +38,7 @@ class Auth extends Controller
             'message' => 'Invalid login'
         ]);
     }
+
 
     public function profile()
     {
